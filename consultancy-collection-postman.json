@@ -1,0 +1,118 @@
+{
+    "info": {
+      "_postman_id": "b716a886-750a-4006-972a-194706382950",
+      "name": "JobSeeker API Tests",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create Job Seeker",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"contactNo\": \"1234567890\",\n  \"email\": \"john.doe@example.com\",\n  \"skills\": [\"Java\", \"Spring Boot\", \"JavaScript\"],\n  \"noticePeriod\": 30,\n  \"experience\": 5,\n  \"currentCtc\": 500000.0,\n  \"expectedCtc\": 700000.0\n}"
+          },
+          "url": {
+            "raw": "{{url}}/api/jobseekers",
+            "host": [
+              "{{url}}"
+            ],
+            "path": [
+              "api",
+              "jobseekers"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get All Job Seekers",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "{{url}}/api/jobseekers",
+            "host": [
+              "{{url}}"
+            ],
+            "path": [
+              "api",
+              "jobseekers"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Job Seeker by ID",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "{{url}}/api/jobseekers/{{id}}",
+            "host": [
+              "{{url}}"
+            ],
+            "path": [
+              "api",
+              "jobseekers",
+              "{{id}}"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Job Seeker",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"firstName\": \"Updated John\",\n  \"lastName\": \"Doe\",\n  \"contactNo\": \"1234567890\",\n  \"email\": \"john.doe@example.com\",\n  \"skills\": [\"Java\", \"Spring Boot\", \"JavaScript\", \"AWS\"],\n  \"noticePeriod\": 30,\n  \"experience\": 5,\n  \"currentCtc\": 500000.0,\n  \"expectedCtc\": 750000.0\n}"
+          },
+          "url": {
+            "raw": "{{url}}/api/jobseekers/{{id}}",
+            "host": [
+              "{{url}}"
+            ],
+            "path": [
+              "api",
+              "jobseekers",
+              "{{id}}"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Delete Job Seeker",
+        "request": {
+          "method": "DELETE",
+          "url": {
+            "raw": "{{url}}/api/jobseekers/{{id}}",
+            "host": [
+              "{{url}}"
+            ],
+            "path": [
+              "api",
+              "jobseekers",
+              "{{id}}"
+            ]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
