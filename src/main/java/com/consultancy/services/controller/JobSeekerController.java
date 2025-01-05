@@ -30,6 +30,12 @@ public class JobSeekerController {
         return new ResponseEntity<>(jobSeekers, HttpStatus.OK);
     }
 
+    @GetMapping("/loadTestData")
+    public ResponseEntity<Void> loadJobSeekerTestData() {
+        jobSeekerService.loadJobSeekerTestData();
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<JobSeeker> getJobSeekerById(@PathVariable Long id) {
         JobSeeker jobSeeker = jobSeekerService.getJobSeekerById(id);
