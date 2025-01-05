@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14.4 # Specify a stable PostgreSQL version
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_DB: "consultancy"
+    ports:
+      - "5433:5432" # Remove if not required
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - consultancy-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "8090:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./target/classes:/app/classes
+    networks:
+      - consultancy-network 
+
+  
+
+networks:
+  consultancy-network:
+
+volumes:
+  postgres_data:
